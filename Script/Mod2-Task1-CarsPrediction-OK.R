@@ -1,7 +1,8 @@
 #Read library
 library(readr)
 #Upload Data set from my working enviroment
-CarsSet<- read.csv ("~/Desktop/Ubiqum/Módulo 2/Task1/cars.csv")
+CarsSet<- read.csv ("~/Desktop/Ubiqum/Módulo 2/Task1/cars.csv")
+
 #Exploring data
 names(CarsSet)<-c("name","speed","distance")
 attributes(CarsSet)
@@ -23,8 +24,16 @@ CarsSet$distance<-as.numeric(CarsSet$distance)
 hist(CarsSet$distance)
 CarsSet$distance
 #NA Removing and Replacing
+
+# is.na() tells you if values are NA (TRUE) or not (FALSE). You are looking for
+# how many NA's you have in hour df. If you sum() is.na(), it will return how
+# many TRUE you get -> how many NA's in the object.
+sum(is.na(CarsSet)) # return 0, you do not have NA's !
 is.na(CarsSet)
-na.omit(CarsSet$distance)
+na.omit(CarsSet$distance) # Understood na.omit() ?
+# The following line is AMAZING !
+# But you do not need it because you do not have NA's. Will be usefull when you will have NA's
+# Keep it !
 CarsSet$speed[is.na(CarsSet$speed)]<-mean(CarsSet$speed,na.rm = TRUE)
 #Testing and Training Sizes
 set.seed(123)
@@ -44,3 +53,6 @@ CarsPrediction
 #Metrics
 summary(CarsModel)
 summary(CarsPrediction)
+
+
+# Where is the error analysis ?
