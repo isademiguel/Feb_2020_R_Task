@@ -1,7 +1,8 @@
 #Read library
 library("readr")
 #Import data set
-IrisDataset <- read.csv("~/Desktop/Ubiqum/Módulo 2/Task1/iris.csv")
+IrisDataset <- read.csv("~/Desktop/Ubiqum/Módulo 2/Task1/iris.csv")
+IrisDataset <- read.csv("data/iris.csv")
 #Exploring data
 attributes(IrisDataset)
 summary(IrisDataset)
@@ -15,6 +16,8 @@ plot(IrisDataset$Petal.Width, IrisDataset$Petal.Length)
 plot(IrisDataset$Sepal.Width, IrisDataset$Petal.Width)
 #Preprocessing
 IrisDataset$Species<- as.numeric(IrisDataset$Species)
+# qqnorm() is more data exploratin than preprocessing. It tells you if your feature follow
+# a normal distribution
 qqnorm(IrisDataset$Species)
 qqnorm(IrisDataset$Petal.Length)
 qqnorm(IrisDataset$Petal.Width)
@@ -43,3 +46,6 @@ IrisPrediction
 plot(IrisModel)
 summary(IrisModel)
 summary(IrisPrediction)
+
+# Very good and smooth code.
+# Unfortunatly, you forget the error analysis !
